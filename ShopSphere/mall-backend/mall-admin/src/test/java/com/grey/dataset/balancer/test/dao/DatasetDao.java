@@ -97,7 +97,7 @@ public class DatasetDao {
     }
 
 
-    private dataset createDataset(Long id, Long bucket_id, String name, String version_num, String usage_type, String scene_id, int total_files) {
+    public dataset createDataset(Long id, Long bucket_id, String name, String version_num, String usage_type, String scene_id, int total_files) {
         dataset ds = new dataset();
         ds.setId(id);
         ds.setBucket_id(bucket_id);
@@ -109,7 +109,7 @@ public class DatasetDao {
         return ds;
     }
 
-    private ddetailEntity createDetailEntity(Long datasetId, Long fileId, String fileName, String labelId, String categoryId, String fileUsage) {
+    public ddetailEntity createDetailEntity(Long datasetId, Long fileId, String fileName, String labelId, String categoryId, String fileUsage) {
         ddetailEntity entity = new ddetailEntity();
         entity.setDataset_id(datasetId);
         entity.setFile_id(fileId);
@@ -121,7 +121,7 @@ public class DatasetDao {
     }
 
 
-    private dfileEntitiy createFileEntity(Long datasetId, String fileId, String fileUsage, String folderId) {
+    public dfileEntitiy createFileEntity(Long datasetId, String fileId, String fileUsage, String folderId) {
         dfileEntitiy entity = new dfileEntitiy();
         entity.setDataset_id(datasetId);
         entity.setFile_id(fileId);
