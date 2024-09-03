@@ -82,14 +82,14 @@ public class DatasetDao {
         // Dataset 1 - 分组3，总共有4张图片
         ddetailEntities.add(createDetailEntity(1L, 401L, "fileC1", "label3", "C", "3"));
         ddetailEntities.add(createDetailEntity(1L, 402L, "fileC2", "label3", "C", "3"));
-        ddetailEntities.add(createDetailEntity(1L, 403L, "fileC2", "label3", "C", "3"));
-        ddetailEntities.add(createDetailEntity(1L, 404L, "fileC2", "label3", "C", "3"));
+        ddetailEntities.add(createDetailEntity(1L, 403L, "fileC3", "label3", "C", "3"));
+        ddetailEntities.add(createDetailEntity(1L, 404L, "fileC4", "label3", "C", "3"));
 
 
 
         // Dataset 1 - 分组4，总共有2张图片
         ddetailEntities.add(createDetailEntity(1L, 501L, "fileD1", "label4", "D", "3"));
-        ddetailEntities.add(createDetailEntity(1L, 502L, "fileD1", "label4", "D", "3"));
+        ddetailEntities.add(createDetailEntity(1L, 502L, "fileD2", "label4", "D", "3"));
 
 
 
