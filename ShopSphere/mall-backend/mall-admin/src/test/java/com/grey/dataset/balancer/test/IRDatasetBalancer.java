@@ -48,15 +48,17 @@ public class IRDatasetBalancer {
         List<dataset> newDatasets = new ArrayList<>(originalDatasets);
 
         // 创建新的 dataset 实例 (v2.0)
-        dataset newDataset = dao.createDataset(2L, 102L, "Dataset 1", "v2.0", "3", "Image Recognition", balancedDetails.size());
+        dataset newDataset = dao.createDataset(2L, 102L, "Dataset 1", "v2.0", "3", "Image Recognition", newDetailEntities.size());
         newDatasets.add(newDataset);
 
         // 更新 dfileEntities 和 ddetailEntities 列表，添加 v2.0 的数据
         for (ddetailEntity detail : balancedDetails) {
-            dfileEntitiy file = findMatchingFile(originalFiles, detail.getFile_id());
+/*         不复制dfileEntities的内容，因为通过fileId可以在dfileEntities列表中找到对应的文件数据
+           dfileEntitiy file = findMatchingFile(originalFiles, detail.getFile_id());
             if (file != null) {
                 newFileEntities.add(dao.createFileEntity(newDataset.getId(), file.getFile_id(), file.getFile_usage(), file.getFolder_id()));
             }
+*/
             newDetailEntities.add(dao.createDetailEntity(newDataset.getId(), detail.getFile_id(), detail.getFile_name(), detail.getLabel_id(), detail.getCategory_id(), detail.getFile_usage()));
         }
 
