@@ -1,5 +1,11 @@
-package com.grey.utils.test.bean;
+package com.grey.dataset.balancer.test.bean;
 
+import lombok.Data;
+
+/**
+ * 数据集信息
+ */
+@Data
 public class dataset {
     Long id ; // 即datasetId，数据集编号
     Long bucket_id; // 文件存储桶的ID
