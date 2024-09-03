@@ -67,11 +67,15 @@ public class IRDatasetBalancer {
             System.out.println("  - Dataset ID: " + detail.getDataset_id() + ", File Name: " + detail.getFile_name() + ", Category: " + detail.getCategory_id() + ", Version: " + (detail.getDataset_id() == 1L ? "v1.0" : "v2.0"));
         }
 
+
         // 输出完整的dfileEntities列表
         System.out.println("\nComplete dfileEntities List:");
         for (dfileEntitiy file : newFileEntities) {
             System.out.println("  - Dataset ID: " + file.getDataset_id() + ", File ID: " + file.getFile_id() + ", Folder ID: " + file.getFolder_id() + ", Version: " + (file.getDataset_id() == 1L ? "v1.0" : "v2.0"));
         }
+
+
+
 
         // 输出完整的datasets列表
         System.out.println("\nComplete datasets List:");
@@ -79,6 +83,10 @@ public class IRDatasetBalancer {
             System.out.println("  - Dataset ID: " + ds.getId() + ", Name: " + ds.getName() + ", Version: " + ds.getVersion_num() + ", Total Files: " + ds.getTotal_files());
         }
 
+
+        System.out.println("newDatasets 总数量:"+newDatasets.size());
+        System.out.println("newFileEntities 总数量:"+newFileEntities.size());
+        System.out.println("newDetailEntities 总数量:"+newDetailEntities.size());
     }
 
 
