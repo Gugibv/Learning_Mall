@@ -20,24 +20,6 @@ public class PercentileCalculator {
         return data[lowerIndex] + weight * (data[upperIndex] - data[lowerIndex]);
     }
 
-    // Method to calculate percentile from a collection
-    public static double calculatePercentile(Collection<Double> data, double percentile) {
-        double[] dataArray = data.stream().mapToDouble(Double::doubleValue).toArray();
-        Arrays.sort(dataArray);
-        double rank = (percentile / 100.0) * (dataArray.length - 1)  ; // rank = (75 / 100.0) * (10 - 1) = 6.75
-        int lowerIndex = (int) rank;      // 第6位  25
-        int upperIndex = lowerIndex + 1;  // 第7位  28
-
-        if (upperIndex >= dataArray.length) {
-            return dataArray[lowerIndex];
-        }
-
-        double weight = rank - lowerIndex; //  0.75
-        // 所以75.0%百分位点是 ： 25 * 0.25+ 28* 0.75 = 7+ 21 = 30
-        return dataArray[lowerIndex] + weight * (dataArray[upperIndex] - dataArray[lowerIndex]);
-
-
-    }
 
     public static void main(String[] args) {
         // Example with array
@@ -46,19 +28,6 @@ public class PercentileCalculator {
         double resultArray = calculatePercentile(arrayData, percentile);
         System.out.println("From Array: The " + percentile + "th percentile is: " + resultArray);
 
-        // Example with collection
-        Collection<Double> collectionData = new ArrayList<>();
-        collectionData.add(12.0);
-        collectionData.add(15.0);
-        collectionData.add(17.0);
-        collectionData.add(20.0);
-        collectionData.add(23.0);
-        collectionData.add(25.0);
-        collectionData.add(28.0);
-        collectionData.add(30.0);
-        collectionData.add(35.0);
-        collectionData.add(40.0);
-        double resultCollection = calculatePercentile(collectionData, percentile);
-        System.out.println("From Collection: The " + percentile + "th percentile is: " + resultCollection);
+
     }
 }
