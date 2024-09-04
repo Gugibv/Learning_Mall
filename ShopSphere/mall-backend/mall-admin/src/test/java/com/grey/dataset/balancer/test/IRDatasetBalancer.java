@@ -33,13 +33,19 @@ public class IRDatasetBalancer {
         List<ddetailEntity> originalDetails = dao.getDdetailEntities();
         List<dfileEntitiy> originalFiles = dao.getDfileEntities();
         List<dataset> originalDatasets = dao.getDatasets();
+
+
         // 计算平衡后的数据
         double balancePercentile = 1; // 默认对齐到最大值
         List<ddetailEntity> balancedDetails = balanceDataset(originalDetails, balancePercentile, originalFiles);
+
+
         // 存储补齐后的数据到原本的列表中，创建v2.0版本的数据集
         List<dfileEntitiy> newFileEntities = new ArrayList<>(originalFiles);
         List<ddetailEntity> newDetailEntities = new ArrayList<>(originalDetails);
         List<dataset> newDatasets = new ArrayList<>(originalDatasets);
+
+
         // 更新文件总数
         int totalFiles = newDetailEntities.size() + balancedDetails.size();
         // 创建新的 dataset 实例 (v2.0)
@@ -50,10 +56,9 @@ public class IRDatasetBalancer {
         // 更新 dfileEntities 和 ddetailEntities 列表，添加 v2.0 的数据
         for (ddetailEntity detail : balancedDetails) {
             newDetailEntities.add(detail);
+            newFileEntities.add(dao.createFileEntity(detail.getDataset_id(),detail.getFile_id(), detail.getFile_usage(), "new_folder_id"));
+
         }
-
-
-
 
         //打印测试结果
         printResult(newFileEntities,newDetailEntities,newDatasets) ;
@@ -99,6 +104,7 @@ public class IRDatasetBalancer {
         List<ddetailEntity> balancedDetails = new ArrayList<>();
         long newFileId = 503L; // 从503L开始新的file_id
         Map<String, Integer> fileCopyCount = new HashMap<>();  // 用于记录每个文件名的复制次数
+
         for (Map.Entry<String, List<ddetailEntity>> entry : categoryCountMap.entrySet()) {
             String categoryId = entry.getKey();
             List<ddetailEntity> details = entry.getValue();
@@ -107,6 +113,7 @@ public class IRDatasetBalancer {
             if (currentCount < targetPercentileValue) {
                 int filesToAdd = (int) targetPercentileValue - currentCount;
                 System.out.println("Category " + categoryId + " needs " + filesToAdd + " more files.");
+
                 // 复制现有文件并添加到balancedDetails
                 for (int i = 0; i < filesToAdd; i++) {
                     ddetailEntity originalFile = details.get(i % currentCount);
@@ -126,13 +133,6 @@ public class IRDatasetBalancer {
                     newDetail.setFile_usage("3");
                     balancedDetails.add(newDetail);
 
-                    // 创建对应的 dfileEntitiy，确保与 ddetailEntities 一致
-                    dfileEntitiy newFile = new dfileEntitiy();
-                    newFile.setDataset_id(2L);  // v2.0 数据集
-                    newFile.setFile_id(newFileId);
-                    newFile.setFile_usage("3");
-                    newFile.setFolder_id("folder_new");
-                    originalFiles.add(newFile);  // 添加到文件列表
                     newFileId++;  // 更新file_id
                 }
             }
@@ -147,18 +147,13 @@ public class IRDatasetBalancer {
                 newDetail.setCategory_id(categoryId);
                 newDetail.setFile_usage("3");
                 balancedDetails.add(newDetail);
-
-
-                dfileEntitiy newFile = new dfileEntitiy();
-                newFile.setDataset_id(2L);
-                newFile.setFile_id(detail.getFile_id());  // 保持与 ddEntities 相同
-                newFile.setFile_usage("3");
-                newFile.setFolder_id("folder_new");
-                originalFiles.add(newFile);
             }
         }
         return balancedDetails;
     }
+
+
+
 
 
     public static void printResult(List<dfileEntitiy> newFileEntities, List<ddetailEntity> newDetailEntities, List<dataset> newDatasets){
@@ -180,7 +175,6 @@ public class IRDatasetBalancer {
         System.out.println("newDatasets 总数量:" + newDatasets.size());
         System.out.println("newFileEntities 总数量:" + newFileEntities.size());
         System.out.println("newDetailEntities 总数量:" + newDetailEntities.size());
-
     }
 
 }
