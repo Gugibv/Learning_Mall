@@ -37,7 +37,7 @@ public class IRDatasetBalancer {
 
         // 计算平衡后的数据
         double balancePercentile = 1; // 默认对齐到最大值
-        List<ddetailEntity> balancedDetails = balanceDataset(originalDetails, balancePercentile, originalFiles);
+        List<ddetailEntity> balancedDetails = balanceDataset(originalDetails, balancePercentile);
 
 
         // 存储补齐后的数据到原本的列表中，创建v2.0版本的数据集
@@ -67,7 +67,7 @@ public class IRDatasetBalancer {
 
 
 
-    public static List<ddetailEntity> balanceDataset(List<ddetailEntity> datasetDetails, double balancePercentile, List<dfileEntitiy> originalFiles) {
+    public static List<ddetailEntity> balanceDataset(List<ddetailEntity> datasetDetails, double balancePercentile) {
 
 
         // Step 1: 过滤出 training 数据
