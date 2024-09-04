@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class dfileEntitiy {
     Long dataset_id;
-    String file_id;
+    Long file_id;
     String file_usage;
     String folder_id;
 }

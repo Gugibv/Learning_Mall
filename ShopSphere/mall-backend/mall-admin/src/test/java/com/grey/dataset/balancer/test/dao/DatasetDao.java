@@ -22,33 +22,33 @@ public class DatasetDao {
         List<dfileEntitiy> dfileEntities = new ArrayList<>();
 
         // Dataset 1 - 分组A的文件实体
-        dfileEntities.add(createFileEntity(1L, "201", "3", "folderA"));
-        dfileEntities.add(createFileEntity(1L, "202", "3", "folderA"));
-        dfileEntities.add(createFileEntity(1L, "203", "3", "folderA"));
-        dfileEntities.add(createFileEntity(1L, "204", "3", "folderA"));
-        dfileEntities.add(createFileEntity(1L, "205", "3", "folderA"));
-        dfileEntities.add(createFileEntity(1L, "206", "3", "folderA"));
-        dfileEntities.add(createFileEntity(1L, "207", "3", "folderA"));
-        dfileEntities.add(createFileEntity(1L, "208", "3", "folderA"));
+        dfileEntities.add(createFileEntity(1L, 201L, "3", "folderA"));
+        dfileEntities.add(createFileEntity(1L, 202L, "3", "folderA"));
+        dfileEntities.add(createFileEntity(1L, 203L, "3", "folderA"));
+        dfileEntities.add(createFileEntity(1L, 204L, "3", "folderA"));
+        dfileEntities.add(createFileEntity(1L, 205L, "3", "folderA"));
+        dfileEntities.add(createFileEntity(1L, 206L, "3", "folderA"));
+        dfileEntities.add(createFileEntity(1L, 207L, "3", "folderA"));
+        dfileEntities.add(createFileEntity(1L, 208L, "3", "folderA"));
 
 
         // Dataset 1 - 分组B的文件实体
-        dfileEntities.add(createFileEntity(1L, "301", "3", "folderB"));
-        dfileEntities.add(createFileEntity(1L, "302", "3", "folderB"));
-        dfileEntities.add(createFileEntity(1L, "303", "3", "folderB"));
-        dfileEntities.add(createFileEntity(1L, "304", "3", "folderB"));
-        dfileEntities.add(createFileEntity(1L, "305", "3", "folderB"));
-        dfileEntities.add(createFileEntity(1L, "306", "3", "folderB"));
+        dfileEntities.add(createFileEntity(1L, 301L, "3", "folderB"));
+        dfileEntities.add(createFileEntity(1L, 302L, "3", "folderB"));
+        dfileEntities.add(createFileEntity(1L, 303L, "3", "folderB"));
+        dfileEntities.add(createFileEntity(1L, 304L, "3", "folderB"));
+        dfileEntities.add(createFileEntity(1L, 305L, "3", "folderB"));
+        dfileEntities.add(createFileEntity(1L, 306L, "3", "folderB"));
 
         // Dataset 1 - 分组C的文件实体
-        dfileEntities.add(createFileEntity(1L, "401", "3", "folderC"));
-        dfileEntities.add(createFileEntity(1L, "402", "3", "folderC"));
-        dfileEntities.add(createFileEntity(1L, "403", "3", "folderC"));
-        dfileEntities.add(createFileEntity(1L, "404", "3", "folderC"));
+        dfileEntities.add(createFileEntity(1L, 401L, "3", "folderC"));
+        dfileEntities.add(createFileEntity(1L, 402L, "3", "folderC"));
+        dfileEntities.add(createFileEntity(1L, 403L, "3", "folderC"));
+        dfileEntities.add(createFileEntity(1L, 404L, "3", "folderC"));
 
         // Dataset 1 - 分组D的文件实体
-        dfileEntities.add(createFileEntity(1L, "501", "3", "folderD"));
-        dfileEntities.add(createFileEntity(1L, "502", "3", "folderD"));
+        dfileEntities.add(createFileEntity(1L, 501L, "3", "folderD"));
+        dfileEntities.add(createFileEntity(1L, 502L, "3", "folderD"));
 
         return dfileEntities;
     }
@@ -121,7 +121,7 @@ public class DatasetDao {
     }
 
 
-    public dfileEntitiy createFileEntity(Long datasetId, String fileId, String fileUsage, String folderId) {
+    public dfileEntitiy createFileEntity(Long datasetId, Long fileId, String fileUsage, String folderId) {
         dfileEntitiy entity = new dfileEntitiy();
         entity.setDataset_id(datasetId);
         entity.setFile_id(fileId);

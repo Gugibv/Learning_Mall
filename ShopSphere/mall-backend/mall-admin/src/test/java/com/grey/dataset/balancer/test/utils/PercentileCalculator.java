@@ -39,25 +39,6 @@ public class PercentileCalculator {
 
     }
 
-    // Method to calculate the median from an array
-    public static double calculateMedian(double[] data) {
-        Arrays.sort(data);
-        int length = data.length;
-        if (length % 2 == 0) {
-            // Even number of elements: average the two middle values
-            return (data[length / 2 - 1] + data[length / 2]) / 2.0;
-        } else {
-            // Odd number of elements: return the middle value
-            return data[length / 2];
-        }
-    }
-
-    // Method to calculate the median from a collection
-    public static double calculateMedian(Collection<Double> data) {
-        double[] dataArray = data.stream().mapToDouble(Double::doubleValue).toArray();
-        return calculateMedian(dataArray);
-    }
-
     public static void main(String[] args) {
         // Example with array
         double[] arrayData = {12, 15, 17, 20, 23, 25, 28, 30, 35, 40};
