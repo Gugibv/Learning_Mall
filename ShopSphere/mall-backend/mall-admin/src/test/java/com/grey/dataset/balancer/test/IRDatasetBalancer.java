@@ -76,7 +76,7 @@ public class IRDatasetBalancer {
                 .collect(Collectors.toList());
 
 
-        // Step 2: 按 category_id 分组并计算每个分组的图片数量
+        // Step 2: 按 category_id 分组
         Map<String, List<ddetailEntity>> categoryCountMap = new HashMap<>();
         for (ddetailEntity detail : trainingData) {
             String categoryId = detail.getCategory_id();
