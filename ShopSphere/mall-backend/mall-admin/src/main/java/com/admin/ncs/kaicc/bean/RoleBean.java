@@ -1,4 +1,4 @@
-package com.grey.admin.bean;
+package com.admin.ncs.kaicc.bean;
 
 import lombok.Data;
 
