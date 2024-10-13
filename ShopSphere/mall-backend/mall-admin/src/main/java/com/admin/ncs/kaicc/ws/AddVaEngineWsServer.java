@@ -39,7 +39,10 @@ public class AddVaEngineWsServer {
         System.out.println("send to " + vaEngineId + ", modelInstallStatus : " + modelInstallStatus + " " + messages);
         AddVaEngineWsDTO addVaEngineWsDTO = new AddVaEngineWsDTO(null,"200", messages,modelInstallStatus);
         String json = JSONObject.toJSONString(addVaEngineWsDTO);
-        webSocketSet.forEach(server -> server.sendMessage(json));
+        webSocketSet.stream()
+                .filter(server ->
+                        server.vaEngineId.equals(vaEngineId))
+                .forEach(server -> server.sendMessage(json));
     }
 
 
