@@ -1,3 +1,4 @@
+/*
 package com.admin.ncs.kaicc.ws;
 
 
@@ -65,3 +66,4 @@ public class AddVaEngineWsServer {
         }
     }
 }
+*/
