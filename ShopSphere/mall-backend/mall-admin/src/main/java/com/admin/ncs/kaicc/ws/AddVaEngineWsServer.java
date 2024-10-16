@@ -25,16 +25,6 @@ public class AddVaEngineWsServer {
     private Session session;
     private String vaEngineId;
 
-    public static void sendVaEngineStatus(String vaEngineId, String status, List<String> messages) {
-        System.out.println("send to " + vaEngineId + ", status : " + status + " " + messages);
-        AddVaEngineWsDTO addVaEngineWsDTO = new AddVaEngineWsDTO(null,status, messages ,null);
-        String json = JSONObject.toJSONString(addVaEngineWsDTO);
-        webSocketSet.stream()
-                .filter(server ->
-                        server.vaEngineId.equals(vaEngineId))
-                .forEach(server -> server.sendMessage(json));
-    }
-
     public static void sendVaEngineInstallStatus(String vaEngineId, String modelInstallStatus, List<String> messages) {
         System.out.println("send to " + vaEngineId + ", modelInstallStatus : " + modelInstallStatus + " " + messages);
         AddVaEngineWsDTO addVaEngineWsDTO = new AddVaEngineWsDTO(null,"200", messages,modelInstallStatus);
