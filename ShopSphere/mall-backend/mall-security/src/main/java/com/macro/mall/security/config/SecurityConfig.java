@@ -8,10 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,37 +22,34 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * Created on 2019/11/5.
  */
 @Configuration
-@EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        // 获取忽略的 URL 列表
+        String[] urls = ignoreUrlsConfig().getUrls().toArray(new String[0]);
+
         http
-                .authorizeHttpRequests(authorizeRequests -> {
-                    // 配置白名单
-                    for (String url : ignoreUrlsConfig().getUrls()) {
-                        authorizeRequests.requestMatchers(url).permitAll();
-                    }
-                    // 允许跨域请求的 OPTIONS 请求
-                    authorizeRequests.requestMatchers(HttpMethod.OPTIONS).permitAll();
-                    // 任何请求需要身份认证
-                    authorizeRequests.anyRequest().authenticated();
-                })
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(urls).permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS).permitAll()
+                        .anyRequest().authenticated()
+                )
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(sessionManagement ->
-                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .exceptionHandling(exceptionHandling ->
-                        exceptionHandling
-                                .accessDeniedHandler(restfulAccessDeniedHandler())
-                                .authenticationEntryPoint(restAuthenticationEntryPoint()))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(exception -> exception
+                        .accessDeniedHandler(restfulAccessDeniedHandler())
+                        .authenticationEntryPoint(restAuthenticationEntryPoint())
+                )
                 .addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
     }
 
     @Bean
@@ -61,6 +57,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    // 其他 Bean 配置
     @Bean
     public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {
         return new JwtAuthenticationTokenFilter();

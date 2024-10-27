@@ -1,6 +1,8 @@
 server:
   port: 8082
 spring:
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     url: jdbc:mysql://129.28.122.208:3306/micromall?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: root
