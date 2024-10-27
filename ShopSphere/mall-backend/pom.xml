@@ -187,8 +187,6 @@
             </dependency>
 
 
-
-
             <dependency>
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
@@ -198,7 +196,7 @@
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>9.0.0.Beta3</version>
+                <version>8.0.1.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.springdoc</groupId>
@@ -209,6 +207,16 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>3.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>co.elastic.clients</groupId>
+                <artifactId>elasticsearch-java</artifactId>
+                <version>8.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.rabbitmq</groupId>
+                <artifactId>amqp-client</artifactId>
+                <version>5.25.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
