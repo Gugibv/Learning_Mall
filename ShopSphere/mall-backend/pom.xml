@@ -12,7 +12,8 @@
         <module>mall-admin</module>    <!--mall中后台管理模块-->
         <module>mall-common</module>
         <module>mall-mbg</module>
-        <module>mall-security</module>   <!--mall通用模块-->
+        <module>mall-security</module>
+        <module>mall-order</module>   <!--mall通用模块-->
     </modules>
 
     <parent>
