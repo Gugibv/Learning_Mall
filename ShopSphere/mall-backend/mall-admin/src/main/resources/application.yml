@@ -65,3 +65,8 @@ aliyun:
 upload:
   product:
     images: D:/temp/product/images
+logging:
+  level:
+    org:
+      mybatis: DEBUG
+      spring: DEBUG
