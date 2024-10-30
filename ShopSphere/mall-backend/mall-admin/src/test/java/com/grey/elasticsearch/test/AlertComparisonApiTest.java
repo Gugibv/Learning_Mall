@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class AlertComparisonApiTest {
     public static void main(String []args){
-        co.elastic.clients.elasticsearch.ElasticsearchClient client = ElasticsearchClient.createLocalElasticsearchClient();
+        co.elastic.clients.elasticsearch.ElasticsearchClient client = ElasticsearchClient.createLocalElasticsearchClientNoPWD();
 
         //  queryAllEventData(client);
 

@@ -28,6 +28,13 @@ public class ElasticsearchClient {
         return new co.elastic.clients.elasticsearch.ElasticsearchClient(transport);
     }
 
+    public static co.elastic.clients.elasticsearch.ElasticsearchClient createLocalElasticsearchClientNoPWD() {
+        RestClientBuilder builder = RestClient.builder(new HttpHost("localhost", 9200, "http"));
+        RestClient restClient = builder.build();
+        ElasticsearchTransport transport = new RestClientTransport(restClient, new co.elastic.clients.json.jackson.JacksonJsonpMapper());
+        return new co.elastic.clients.elasticsearch.ElasticsearchClient(transport);
+    }
+
 
     public static void closeClient(co.elastic.clients.elasticsearch.ElasticsearchClient client) {
         try {

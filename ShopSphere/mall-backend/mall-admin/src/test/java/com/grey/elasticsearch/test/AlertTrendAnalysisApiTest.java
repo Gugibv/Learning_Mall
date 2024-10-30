@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class AlertTrendAnalysisApiTest {
     public static void main(String []args){
-        co.elastic.clients.elasticsearch.ElasticsearchClient client = ElasticsearchClient.createLocalElasticsearchClient();
+        co.elastic.clients.elasticsearch.ElasticsearchClient client = ElasticsearchClient.createLocalElasticsearchClientNoPWD();
 
         //  queryAllEventData(client);
         QueryParametersDTO queryParametersDTO = new QueryParametersDTO();
