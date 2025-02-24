@@ -1,4 +1,4 @@
-package com.admin.ncs.kaicc.util;
+package com.admin.ncs.kaicc.util.test.rabbitmq;
 
 import com.rabbitmq.client.*;
 
