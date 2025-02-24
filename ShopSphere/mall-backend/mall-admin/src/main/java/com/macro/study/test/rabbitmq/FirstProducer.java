@@ -1,4 +1,4 @@
-package com.admin.ncs.kaicc.util.test.rabbitmq;
+package com.macro.study.test.rabbitmq;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
