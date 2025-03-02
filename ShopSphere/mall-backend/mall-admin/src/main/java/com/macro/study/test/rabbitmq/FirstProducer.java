@@ -6,12 +6,12 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.MessageProperties;
 
 public class FirstProducer {
-    private static final String HOST_NAME="172.31.2.200";
+    private static final String HOST_NAME="127.0.0.1";
     private static final int HOST_PORT=5672;
     private static final String QUEUE_NAME="test";
-    public static final String USER_NAME="vade";
-    public static final String PASSWORD="vade123456";
-    public static final String VIRTUAL_HOST="/grey";
+    public static final String USER_NAME="admin";
+    public static final String PASSWORD="admin";
+    public static final String VIRTUAL_HOST="grey";
 
     public static void main(String[] args) throws Exception{
         ConnectionFactory factory = new ConnectionFactory();
@@ -22,6 +22,8 @@ public class FirstProducer {
         factory.setVirtualHost(VIRTUAL_HOST);
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
+
+        channel.exchangeDeclare("myExchange","direct", false,false,null);
         /**
          * 声明一个对列。几个参数依次为：
          *       队列名，durable  是否实例化
@@ -32,12 +34,12 @@ public class FirstProducer {
          * 如果Broker上没有队列，那么就会自动创建队列。
          * 但是如果Broker上已经由了这个队列。那么队列的属性必须匹配，否则会报错。
          */
-        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+  /*      channel.queueDeclare(QUEUE_NAME, true, false, false, null);
         String message = "message";
         channel.basicPublish("", QUEUE_NAME,
                 MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
         channel.close();
-        connection.close();
+        connection.close();*/
 
     }
 }
