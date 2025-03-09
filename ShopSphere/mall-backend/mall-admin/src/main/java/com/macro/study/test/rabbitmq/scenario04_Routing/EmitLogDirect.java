@@ -1,4 +1,4 @@
-package com.macro.study.test.rabbitmq.scenario04;
+package com.macro.study.test.rabbitmq.scenario04_Routing;
 
 import com.macro.study.test.rabbitmq.RabbitMQUtil;
 import com.rabbitmq.client.Channel;

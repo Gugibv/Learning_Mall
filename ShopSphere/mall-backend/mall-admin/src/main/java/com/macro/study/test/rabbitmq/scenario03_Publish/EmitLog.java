@@ -1,4 +1,4 @@
-package com.macro.study.test.rabbitmq.scenario03;
+package com.macro.study.test.rabbitmq.scenario03_Publish;
 
 import com.macro.study.test.rabbitmq.RabbitMQUtil;
 import com.rabbitmq.client.Channel;

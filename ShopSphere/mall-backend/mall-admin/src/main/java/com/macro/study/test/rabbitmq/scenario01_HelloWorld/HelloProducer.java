@@ -1,4 +1,4 @@
-package com.macro.study.test.rabbitmq.scenario01;
+package com.macro.study.test.rabbitmq.scenario01_HelloWorld;
 
 import com.macro.study.test.rabbitmq.RabbitMQUtil;
 import com.rabbitmq.client.*;

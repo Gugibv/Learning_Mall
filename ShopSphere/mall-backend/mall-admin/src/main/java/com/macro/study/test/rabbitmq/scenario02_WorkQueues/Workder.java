@@ -1,4 +1,4 @@
-package com.macro.study.test.rabbitmq.scenario02;
+package com.macro.study.test.rabbitmq.scenario02_WorkQueues;
 
 import com.macro.study.test.rabbitmq.RabbitMQUtil;
 import com.rabbitmq.client.Channel;
