@@ -1,3 +1,15 @@
+环境
+
+```
+nvm ls-remote
+nvm install 22.14.0
+nvm alias default v22.14.0
+exec $SHELL
+
+node -v 
+v22.14.0
+```
+
 初始化项目
 
 ```
