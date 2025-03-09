@@ -1,4 +1,4 @@
-package com.macro.mall.rabbitmq.producer;
+package com.macro.mall.rabbitmq.study.producer;
 
 
 import java.io.UnsupportedEncodingException;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import com.macro.mall.rabbitmq.util.MyConstants;
+import com.macro.mall.rabbitmq.study.util.MyConstants;
 
 @RestController
 public class ProducerController {

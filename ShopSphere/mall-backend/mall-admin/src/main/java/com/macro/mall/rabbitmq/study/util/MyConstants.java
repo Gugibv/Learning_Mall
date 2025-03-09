@@ -1,4 +1,4 @@
-package com.macro.mall.rabbitmq.util;
+package com.macro.mall.rabbitmq.study.util;
 
 public class MyConstants {
     public static final String QUEUE_QUORUM = "quorumQueue";

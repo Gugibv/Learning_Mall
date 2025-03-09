@@ -1,6 +1,6 @@
-package com.macro.mall.rabbitmq.config;
+package com.macro.mall.rabbitmq.study.config;
 
-import com.macro.mall.rabbitmq.util.MyConstants;
+import com.macro.mall.rabbitmq.study.util.MyConstants;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;

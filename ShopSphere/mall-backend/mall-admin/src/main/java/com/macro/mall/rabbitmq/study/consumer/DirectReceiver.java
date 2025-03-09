@@ -1,8 +1,8 @@
-package com.macro.mall.rabbitmq.consumer;
+package com.macro.mall.rabbitmq.study.consumer;
 
 
 import com.rabbitmq.client.*;
-import com.macro.mall.rabbitmq.util.MyConstants;
+import com.macro.mall.rabbitmq.study.util.MyConstants;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.core.Message;
 import org.springframework.stereotype.Component;
