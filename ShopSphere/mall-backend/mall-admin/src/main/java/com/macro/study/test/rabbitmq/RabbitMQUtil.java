@@ -14,7 +14,7 @@ public class RabbitMQUtil {
     public static final String VIRTUAL_HOST="grey";
 
     public static final String QUEUE_NAME="test";
-    public static final String EXCHANGE_NAME="myExchange";
+
     public static final String ROUTINGKEY="IamGrey";
 
     private RabbitMQUtil() {}

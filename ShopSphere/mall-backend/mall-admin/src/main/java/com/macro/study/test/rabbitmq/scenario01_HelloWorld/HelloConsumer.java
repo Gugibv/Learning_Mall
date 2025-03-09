@@ -6,7 +6,7 @@ import com.rabbitmq.client.*;
 import java.nio.charset.StandardCharsets;
 
 public class HelloConsumer {
-
+    public static final String EXCHANGE_NAME="myExchange";
     public static void main(String[] args) throws Exception {
 
         Connection connection = RabbitMQUtil.getConnection() ;
@@ -16,7 +16,7 @@ public class HelloConsumer {
         channel.queueDeclare(RabbitMQUtil.QUEUE_NAME, true, false, false, null);
 
         channel.basicQos(1);//每个worker同时最多只处理一个消息
-        channel.queueBind(RabbitMQUtil.QUEUE_NAME, RabbitMQUtil.EXCHANGE_NAME, RabbitMQUtil.ROUTINGKEY);
+        channel.queueBind(RabbitMQUtil.QUEUE_NAME, EXCHANGE_NAME, RabbitMQUtil.ROUTINGKEY);
 
 
 
