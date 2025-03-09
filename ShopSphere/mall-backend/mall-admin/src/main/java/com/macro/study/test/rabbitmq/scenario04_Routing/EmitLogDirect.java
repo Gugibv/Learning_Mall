@@ -12,23 +12,18 @@ public class EmitLogDirect {
         try (Connection connection = RabbitMQUtil.getConnection();
              Channel channel = connection.createChannel()) {
 
-            // 声明 Direct 交换机
+            //发送者只管往exchange里发消息，而不用关心具体发到哪些queue里。
             channel.exchangeDeclare(EXCHANGE_NAME, "direct");
 
-
-            // 获取日志级别（routing key）
-            String severity = "Error";
-            // 获取日志内容
-            String message = getMessage(severity);
+            String message = "LOG INFO。。。。";
 
             // 发送消息
-            channel.basicPublish(EXCHANGE_NAME, severity, null, message.getBytes("UTF-8"));
-            System.out.println(" [x] Sent '" + severity + "':'" + message + "'");
+            channel.basicPublish(EXCHANGE_NAME, "info", null, message.getBytes("UTF-8"));
+            channel.basicPublish(EXCHANGE_NAME, "debug", null, message.getBytes("UTF-8"));
+            channel.basicPublish(EXCHANGE_NAME, "warn", null, message.getBytes("UTF-8"));
+
+
         }
     }
 
-
-    private static String getMessage(String severity) {
-        return String.join(" ", severity , "This is an error log from docker...");
-    }
 }

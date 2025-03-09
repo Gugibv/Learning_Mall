@@ -16,10 +16,10 @@ public class ReceiveLogsDirect {
         channel.exchangeDeclare(EXCHANGE_NAME, "direct");
         String queueName = channel.queueDeclare().getQueue();
 
-        String severity = "Error";
-        channel.queueBind(queueName, EXCHANGE_NAME, severity);
 
-        System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+        channel.queueBind(queueName, EXCHANGE_NAME, "info");
+        channel.queueBind(queueName, EXCHANGE_NAME, "debug");
+        channel.queueBind(queueName, EXCHANGE_NAME, "warn");
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
