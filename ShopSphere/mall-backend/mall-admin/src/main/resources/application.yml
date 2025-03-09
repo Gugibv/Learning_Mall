@@ -23,7 +23,7 @@ spring:
     port: 5672
     username: admin
     password: admin
-    virtual-host: grey
+    virtual-host: /grey
 mybatis:
   mapper-locations:
     - classpath:dao/*.xml
