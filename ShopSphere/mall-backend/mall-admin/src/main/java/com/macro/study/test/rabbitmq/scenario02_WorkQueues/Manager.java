@@ -18,9 +18,9 @@ public class Manager {
              Channel channel = connection.createChannel();
              Scanner scanner = new Scanner(System.in)) {
 
-            channel.exchangeDeclare(RabbitMQUtil.EXCHANGE_NAME, "direct", false, false, null);
+        //    channel.exchangeDeclare(RabbitMQUtil.EXCHANGE_NAME, "direct", false, false, null);
             channel.queueDeclare(RabbitMQUtil.QUEUE_NAME, true, false, false, null);
-            channel.queueBind(RabbitMQUtil.QUEUE_NAME, RabbitMQUtil.EXCHANGE_NAME, RabbitMQUtil.ROUTINGKEY);
+        //    channel.queueBind(RabbitMQUtil.QUEUE_NAME, RabbitMQUtil.EXCHANGE_NAME, RabbitMQUtil.ROUTINGKEY);
 
             System.out.println("Enter messages to send (type 'exit' to quit):");
 

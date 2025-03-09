@@ -16,7 +16,7 @@ public class Workder {
         channel.queueDeclare(RabbitMQUtil.QUEUE_NAME, true, false, false, null);
 
         channel.basicQos(1);//每个worker同时最多只处理一个消息
-        channel.queueBind(RabbitMQUtil.QUEUE_NAME, RabbitMQUtil.EXCHANGE_NAME, RabbitMQUtil.ROUTINGKEY);
+    //    channel.queueBind(RabbitMQUtil.QUEUE_NAME, RabbitMQUtil.EXCHANGE_NAME, RabbitMQUtil.ROUTINGKEY);
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
